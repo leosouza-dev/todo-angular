@@ -15,4 +15,23 @@ export class AppComponent {
     this.todos.push(new Todo(2, "ir ao mercado", false));
     this.todos.push(new Todo(3, "passear com o cachorro", true));
   }
+
+  remove(todo: Todo){
+    // encontra o index do todo (se não encontrar é -1)
+    const index = this.todos.indexOf(todo);
+
+    // exlcui se econtrar um registro
+    if(index !== -1){
+      this.todos.splice(index, 1);
+    }
+
+  }
+
+  markAsDone(){
+
+  }
+
+  markAsUnDone(){
+    
+  }
 }
