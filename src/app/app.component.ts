@@ -15,4 +15,8 @@ export class AppComponent {
     this.todos.push("ir ao suprmercado");
     this.todos.push("cortar o cabelo");
   }
+
+  public AlteraTexto(){
+    this.title = "Teste";
+  }
 }
