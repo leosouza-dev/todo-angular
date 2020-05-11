@@ -23,6 +23,8 @@ export class AppComponent {
         Validators.required
       ])]
     });
+
+    this.load()
   }
 
   // não precisa receber nada - no formControls já é feito o bind
@@ -35,6 +37,7 @@ export class AppComponent {
 
     // done inicia como falso
     this.todos.push(new Todo(id, title, false));
+    this.save();
     this.clear();
   }
 
@@ -50,6 +53,8 @@ export class AppComponent {
     // exlcui se econtrar um registro
     if(index !== -1){
       this.todos.splice(index, 1);
+
+      this.save()
     }
 
   }
@@ -57,9 +62,28 @@ export class AppComponent {
   // já recebemos o objeto como referencia...não precisa encontra-lo na lista
   markAsDone(todo: Todo){
     todo.done = true;
+    this.save();
   }
 
   markAsUnDone(todo: Todo){
     todo.done = false;
+    this.save();
+  }
+
+  // salvar os todos no localStorage
+  save(){
+    // convertendo os todos em json string
+    const data = JSON.stringify(this.todos);
+
+    // usando o localStorage - chave / valor
+    localStorage.setItem('todos', data);
+  }
+
+  // pega os todos do LocalStorage
+  load(){
+    // recupera a string do localStorage
+    const data = localStorage.getItem('todos');
+    //converte para json e passa para o array
+    this.todos = JSON.parse(data);
   }
 }
