@@ -8,6 +8,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  // usado para alterar a visualização do template
+  public mode: string = "list"
+
   public todos: Todo[] = []; 
   public title: string = "Minhas Tarefas"
 
@@ -91,6 +94,9 @@ export class AppComponent {
     }else{
       this.todos = [];
     }
+  }
 
+  changeMode(mode: string){
+    this.mode = mode;
   }
 }
