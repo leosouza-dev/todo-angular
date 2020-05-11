@@ -42,6 +42,9 @@ export class AppComponent {
     this.todos.push(new Todo(id, title, false));
     this.save();
     this.clear();
+
+    // volta para lista
+    this.mode = 'list';
   }
 
   //limpa o form
