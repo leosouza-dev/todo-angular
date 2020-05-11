@@ -83,7 +83,14 @@ export class AppComponent {
   load(){
     // recupera a string do localStorage
     const data = localStorage.getItem('todos');
-    //converte para json e passa para o array
-    this.todos = JSON.parse(data);
+
+    // ajuste para checar se é nulo
+    if(data){
+      //converte para json e passa para o array
+      this.todos = JSON.parse(data);
+    }else{
+      this.todos = [];
+    }
+
   }
 }
