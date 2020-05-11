@@ -1,6 +1,7 @@
 <h1>{{title}}</h1>
 
 <ul>
+  <p *ngIf="todos.length == 0"><small>Você ainda não tem nenhuma Tarefa hoje!</small></p>
   <li *ngFor="let todo of todos">
     {{todo.id}} - {{todo.title}} - 
     <button *ngIf="!todo.done" (click)="markAsDone(todo)">Concluir</button>
@@ -10,7 +11,7 @@
 </ul>
 
 <!-- reactive forms -->
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="add()">
   <fieldset>
     <label>Tarefa: </label>
     <input formControlName="title" type="text" placeholder="Título da Tarefa" maxlength="60">

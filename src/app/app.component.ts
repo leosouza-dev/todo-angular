@@ -23,10 +23,24 @@ export class AppComponent {
         Validators.required
       ])]
     });
+  }
 
-    this.todos.push(new Todo(1, "estudar Angular", false));
-    this.todos.push(new Todo(2, "ir ao mercado", false));
-    this.todos.push(new Todo(3, "passear com o cachorro", true));
+  // não precisa receber nada - no formControls já é feito o bind
+  add(){
+    // recuperando o title digitado
+    const title = this.form.controls['title'].value;
+
+    //id será a partir do total de todo no array
+    const id = this.todos.length + 1;
+
+    // done inicia como falso
+    this.todos.push(new Todo(id, title, false));
+    this.clear();
+  }
+
+  //limpa o form
+  clear(){
+    this.form.reset();
   }
 
   remove(todo: Todo){
