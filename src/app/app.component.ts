@@ -27,11 +27,12 @@ export class AppComponent {
 
   }
 
-  markAsDone(){
-
+  // já recebemos o objeto como referencia...não precisa encontra-lo na lista
+  markAsDone(todo: Todo){
+    todo.done = true;
   }
 
-  markAsUnDone(){
-    
+  markAsUnDone(todo: Todo){
+    todo.done = false;
   }
 }
